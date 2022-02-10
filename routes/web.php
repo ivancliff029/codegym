@@ -26,6 +26,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/customer', [App\Http\Controllers\NewCustomerController::class, 'store'])->name('customer');
-Route::post('/order', [App\Http\Controllers\MakeOrderController::class, 'search'])->name('order');
 Route::get('/customer', [App\Http\Controllers\NewCustomerController::class, 'index'])->name('customer');
 Route::get('/order', [App\Http\Controllers\MakeOrderController::class, 'index'])->name('order');
+Route::post('/order', [App\Http\Controllers\MakeOrderController::class, 'store'])->name('order');
+Route::get('/display', [App\Http\Controllers\DisplayCustomersController::class, 'getOrderItem'])->name('display');
+Route::get('/confirm-order', [App\Http\Controllers\ConfirmOrderController::class, 'index'])->name('confirm-order');

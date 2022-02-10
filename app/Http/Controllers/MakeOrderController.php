@@ -3,20 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 use App\Layouts;
+use App\Models\Customer as ModelsCustomer;
+use App\Models\Order as ModelsOrder;
+use Illuminate\Support\Facades\DB;
+
 
 class MakeOrderController extends Controller
 {
     public function index()
     {
-        return view('layouts.order');
-    }
-    public function search(Request $request)
-    {
-        $q = $request->q;
-        $customers = DB::select('select * from customers where name = ?', [1]);
-        return view('layouts.order', ['customers' => $customers]);
+        $results = DB::select('SELECT * FROM orders');
+        $customer_id = $results['customer_id'];
+        $customer_name = DB::table('customers')->where('id', $customer_id)->value('name');
+
+        return view('layouts.order')->with(['result' => $results, 'cust_name' => $customer_name]);
     }
 }

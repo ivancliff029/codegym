@@ -7,43 +7,47 @@
         <div class="col-sm-8">
             <div class="row">
                 <div class="col-sm-8">
-                    <form action="{{ route('order') }}" method="post">
-
-                        {{ csrf_field() }}
-
-                        <div class="form-group">
-                            <input type="text" class="form-control rounded-0" name="q" placeholder="Search customers" required>
-                        </div>
-                    </form>
                     <div class="wrapper order">
                         <h3 class="p-2">Menu</h3>
-                        <div class="card m-2">
-                            <div class="card-header">
-                                Chicken
+                        <form action=" {{ route('display') }} " method="get">
+                            @csrf
+                            <div class="card m-2">
+                                <div class="card-header">
+                                    Chicken
+                                </div>
+                                <div class="card-body">
+                                    7000 Ugx
+                                    <input type="hidden" value="chicken" name="chicken">
+                                    <input type="submit" value="Order" class="btn bg-success text-white">
+                                </div>
                             </div>
-                            <div class="card-body">
-                                7000 Ugx <span class="text-success"> <a href="
-                                #">Order</a> </span>
+                        </form>
+                        <form action=" {{ route('display') }} " method="get">
+                            @csrf
+                            <div class="card m-2">
+                                <div class="card-header">
+                                    Beef
+                                </div>
+                                <div class="card-body">
+                                    6000 Ugx
+                                    <input type="hidden" value="beef" name="beef">
+                                    <input type="submit" value="Order" class="btn bg-success text-white">
+                                </div>
                             </div>
-                        </div>
-                        <div class="card m-2">
-                            <div class="card-header">
-                                Beef
+                        </form>
+                        <form action=" {{ route('display') }} " method="get">
+                            @csrf
+                            <div class="card m-2">
+                                <div class="card-header">
+                                    Beans
+                                </div>
+                                <div class="card-body">
+                                    5000 Ugx
+                                    <input type="hidden" value="beans" name="beans">
+                                    <input type="submit" value="Order" class="btn bg-success text-white">
+                                </div>
                             </div>
-                            <div class="card-body">
-                                6000 Ugx <span class="text-success"> <a href="
-                                #">Order</a> </span>
-                            </div>
-                        </div>
-                        <div class="card m-2">
-                            <div class="card-header">
-                                Beans
-                            </div>
-                            <div class="card-body">
-                                5000 Ugx <span class="text-success"> <a href="
-                                #">Order</a> </span>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <div class="col-sm-4 ">
@@ -52,8 +56,9 @@
                             {{ __('Active Orders')}}
                         </div>
                         <div class="card-body">
-                            <p>Ian <span class="text-muted"> Meat </span><span class="font-weight-bold"> Not Paid </span></p>
-                            <p>Ivan <span class="text-muted"> Chicken</span><span class="font-weight-bold"> Paid </span></p>
+                            @foreach($results as $result)
+                            <p>{{ $cust_name }} <span class="text-muted"> {{ $}} </span><span class="font-weight-bold"> Not Paid </span></p>
+                            @endforeach
                         </div>
                     </div>
                 </div>

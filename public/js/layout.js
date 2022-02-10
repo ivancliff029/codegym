@@ -16,3 +16,6 @@ function customer(evt, action) {
     document.getElementById(action).style.display = "block";
     evt.currentTarget.className += "active";
 }
+function dropAlert() {
+    alert("Hello, User");
+}
