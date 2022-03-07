@@ -12,30 +12,19 @@ use App\Layouts;
 
 class DisplayCustomersController extends Controller
 {
-
-    public function getOrderItem(Request $request)
+    public function index()
     {
-        if ($request->chicken) {
-            $food = $request->chicken;
 
-            $customers = new ModelsCustomer();
-            $customers = ModelsCustomer::all();
+        return view('layouts.displaycustomer');
+    }
+    public function search(Request $request)
+    {
+        // $text = $request->q;
+        // $meal = $request->meal;
+        $data = array($request->q, $request->meal);
 
-            return view('layouts.displaycustomer')->with(['customers' => $customers, 'food' => $food]);
-        } elseif ($request->beef) {
-            $food = $request->beef;
+        $customers = DB::table('customers')->where('name', 'LIKE', '%' . $data[0] . '%')->paginate(5);
 
-            $customers = new ModelsCustomer();
-            $customers = ModelsCustomer::all();
-
-            return view('layouts.displaycustomer')->with(['customers' => $customers, 'food' => $food]);
-        } else {
-            $food = $request->beans;
-
-            $customers = new ModelsCustomer();
-            $customers = ModelsCustomer::all();
-
-            return view('layouts.displaycustomer')->with(['customers' => $customers, 'food' => $food]);
-        }
+        return view('layouts.displaycustomer')->with(['customers' => $customers, 'data' => $data]);
     }
 }

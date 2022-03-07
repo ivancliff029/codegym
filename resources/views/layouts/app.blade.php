@@ -60,6 +60,9 @@
                             <a class="nav-link" href=" {{ route('customer') }} ">New Customer</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href=" {{ route('menu') }} ">Menu</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href=" {{ route('order') }}">Make Order</a>
                         </li>
                         <li class="nav-item dropdown">

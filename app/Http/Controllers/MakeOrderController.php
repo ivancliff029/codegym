@@ -14,10 +14,10 @@ class MakeOrderController extends Controller
 {
     public function index()
     {
-        $results = DB::select('SELECT * FROM orders');
-        $customer_id = $results['customer_id'];
-        $customer_name = DB::table('customers')->where('id', $customer_id)->value('name');
+        // $results = DB::select('SELECT * FROM orders');
+        // $customer_id = $results['customer_id'];
+        // $customer_name = DB::table('customers')->where('id', $customer_id)->value('name');
 
-        return view('layouts.order')->with(['result' => $results, 'cust_name' => $customer_name]);
+        return view('layouts.order');
     }
 }

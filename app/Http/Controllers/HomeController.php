@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Customer;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        return view('home');
+    }
+    public function search(Request $request)
+    {
+        $q = $request->q;
+        $customers = new Customer();
+        $query = Customer::where('name', 'like', '%' . $q . '%');
         return view('home');
     }
 }

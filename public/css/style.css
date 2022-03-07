@@ -7,3 +7,10 @@
 .cust-details {
     font-family: "Courier New";
 }
+.order-btn {
+    float: right;
+}
+.menu {
+    height: 500px;
+    overflow-y: scroll;
+}

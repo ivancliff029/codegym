@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\NewCustomer;
 use App\Http\Controllers\NewCustomerController;
+use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,9 +26,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('home', [App\Http\Controllers\HomeController::class, 'search'])->name('home');
 Route::post('/customer', [App\Http\Controllers\NewCustomerController::class, 'store'])->name('customer');
 Route::get('/customer', [App\Http\Controllers\NewCustomerController::class, 'index'])->name('customer');
 Route::get('/order', [App\Http\Controllers\MakeOrderController::class, 'index'])->name('order');
 Route::post('/order', [App\Http\Controllers\MakeOrderController::class, 'store'])->name('order');
-Route::get('/display', [App\Http\Controllers\DisplayCustomersController::class, 'getOrderItem'])->name('display');
+Route::get('/display', [App\Http\Controllers\DisplayCustomersController::class, 'index'])->name('display');
+Route::get('/display', [App\Http\Controllers\DisplayCustomersController::class, 'search'])->name('display');
 Route::get('/confirm-order', [App\Http\Controllers\ConfirmOrderController::class, 'index'])->name('confirm-order');
+Route::get('/menu', [App\Http\controllers\MenuController::class, 'index'])->name('menu');
