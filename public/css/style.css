@@ -14,3 +14,10 @@
     height: 500px;
     overflow-y: scroll;
 }
+.cust_disp {
+    overflow-y: scroll;
+    height: 450px;
+}
+#profile-icon {
+    padding-top: 5px;
+}

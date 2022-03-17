@@ -90,23 +90,19 @@
             </div>
         </div>
         <div class="col-md-4">
-            <ul class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button class="navbar-toggle" data-toggle="collapse" data-target="#myNav" type="button">
-                            <span class="glyphicon glyphicon-home"></span>
-                        </button>
-                        EDIT MENU
-                    </div>
-                    <div class="collapse navbar-collapse" id="myNav">
-                        <ul class="nav navbar-nav">
-                            <li><a href="#">New Item</a></li>
-                            <li><a href="#">Edit Item</a></li>
-                            <li><a href="#">Delete Item</a></li>
-                        </ul>
-                    </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="{{ route('drinks') }}" target="iframe_a">DRINKS</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('foods') }}" target="iframe_a">FOODS</a>
+                        </li>
+                    </ul>
+                    <div name="iframe_a"></div>
                 </div>
-            </ul>
+            </div>
         </div>
     </div>
 </div>

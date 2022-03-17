@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\NewCustomer;
 use App\Http\Controllers\NewCustomerController;
+use App\ttp\Controllers\DrinksController;
 use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -35,3 +36,7 @@ Route::get('/display', [App\Http\Controllers\DisplayCustomersController::class, 
 Route::get('/display', [App\Http\Controllers\DisplayCustomersController::class, 'search'])->name('display');
 Route::get('/confirm-order', [App\Http\Controllers\ConfirmOrderController::class, 'index'])->name('confirm-order');
 Route::get('/menu', [App\Http\controllers\MenuController::class, 'index'])->name('menu');
+Route::get('/drinks', [App\Http\controllers\DrinksController::class, 'index'])->name('drinks');
+Route::post('/drinks', [App\Http\controllers\DrinksController::class, 'store'])->name('drinks');
+Route::get('/foods', [App\Http\controllers\FoodsController::class, 'index'])->name('foods');
+Route::get('/profile', [App\Http\controllers\UserProfileController::class, 'index'])->name('profile');

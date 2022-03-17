@@ -13,7 +13,8 @@ class NewCustomerController extends Controller
 {
     public function index()
     {
-        return view('layouts.customer');
+        $customers = DB::select('SELECT * FROM customers');
+        return view('layouts.customer')->with('customers', $customers);
     }
     public function store(Request $request)
     {
@@ -24,9 +25,9 @@ class NewCustomerController extends Controller
         $customer->number = $request->number;
 
         if ($customer->save()) {
-            return redirect('layouts.order')->with('success', 'Customer added Successful');
+            return view('layouts.confirm')->with('message', 'Customer added Successful');
         } else {
-            return redirect('layouts.order')->with('error', 'Error adding customer');
+            return view('layouts.confirm')->with('message', 'Error adding customer');
         }
     }
 }

@@ -1,8 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
-    <div class="container col-sm-6 bg-white p-3 rounded">
+<div class="row container">
+    <div class="col-sm-8">
+        <div class="search">
+            <form action="{{ route('display') }}" class="form-group sch" method="get">
+                <input type="search" name="q" class="form-control" id="search" placeholder="Search Here...">
+            </form>
+            <div class="action-tool-bar p-1">
+                <button type="button" class="btn btn-secondary">Update</button>
+                <button type="button" class="btn btn-secondary">Delete</button>
+            </div>
+            <div class="cust_disp">
+                <table class="table table-striped">
+                    <tr>
+                        <td class="bg-dark text-light">Name</td>
+                        <td class="bg-secondary text-light">Email</td>
+                        <td class="bg-secondary text-light">Room Number</td>
+                        <td class="bg-secondary text-light">Number</td>
+                    </tr>
+                    @foreach($customers as $customer)
+                    <tr>
+                        <td>{{ $customer->name }}</td>
+                        <td>{{ $customer->email }}</td>
+                        <td>{{ $customer->room_number }}</td>
+                        <td>{{ $customer->number }}</td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 bg-white p-4 cust_form">
         <h2>New Customer</h2>
         <form action=" {{ route('customer') }} " method="post">
             @csrf
@@ -25,6 +54,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+
 </div>
 
 @endsection
